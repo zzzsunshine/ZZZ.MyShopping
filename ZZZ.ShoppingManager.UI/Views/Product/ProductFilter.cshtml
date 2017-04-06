@@ -1,0 +1,19 @@
+﻿@using ZZZ.ShoppingManager.Model
+@using ZZZ.ShoppingManager.UI.Models
+@model List<Product>
+
+               @foreach (var item in Model)
+                        {
+                            var urls = "/Image/" + @item.ImageUrl;
+                            <tr>
+                                <td>@item.PID</td>
+                                <td><img src=@urls id="imgs" /></td>
+                                <td>@item.PName</td>
+                                <td>@item.CategoryName</td>
+                                <td>@item.PDescription</td>
+                                <td>@item.UnitPrice</td>
+                            </tr>
+                        }
+
+           
+

@@ -1,0 +1,78 @@
+﻿@using ZZZ.ShoppingManager.Model
+@using ZZZ.ShoppingManager.UI.Models
+@model List<Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductManager</title>
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/css/ShowMyCart.css")
+</head>
+<body>
+    <div id="Heard">
+        <span id="title">
+            产品管理
+        </span>
+        <div id="MyCart">
+            @Html.ActionLink("添加商品", "Insert", null, new { @class = "MyCart"})
+            
+        </div>
+        <div id="Login"><span class="glyphicon glyphicon-user"></span>@Html.ActionLink("登录", "Logon", "Account", null, new { @class = "Login" })</div>
+    </div>
+    <table id="Products">
+        <thead>
+            <tr id="ProductTitle">
+                <th>产品编号</th>
+                <th>产品名字</th>
+                <th>图片</th>
+                <th>分类</th>
+                <th>描述</th>
+                <th>单价</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var urls = "/Image/" + @item.ImageUrl;
+                <tr class="ProductInfo">
+                    <td>@item.PID</td>
+                    <td><img src=@urls id="imgs" /></td>
+                    <td>@item.PName</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.PDescriptionText</td>
+                    <td>@item.UnitPrice</td>
+                    <td>
+                        @Html.ActionLink("删除", "Delete", new { PID = item.PID }, new { id = "btnDelete" })
+                        @Html.ActionLink("编辑", "Edit", new { PID = item.PID }, new { id = "btnDelete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div id="PageList">@Html.PageLinks(ViewBag.pagenationText as PagenationText, no => Url.Action("ProductManager", new { PageNo = no }))</div>
+
+    <script>
+        $(function () {
+            $("#btnDelete").click(function () {
+                var yesorno = confirm("确认删除？");
+                if (yesorno) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

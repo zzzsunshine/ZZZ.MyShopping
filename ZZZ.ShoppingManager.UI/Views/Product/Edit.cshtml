@@ -1,0 +1,56 @@
+﻿@model ZZZ.ShoppingManager.Model.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    @Styles.Render("~/css/EditProduct.css")
+</head>
+<body>
+    @using (Html.BeginForm("Save", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div id="Heard">
+            <span id="title">
+                修改商品信息
+            </span>
+        </div>
+        <div id="Infomation">
+            @Html.Hidden("PID", @Model.PID)
+            <span class="textInfo">产品名称：</span><input type="text" class="text" value="@Model.PName" placeholder="产品名称" name="PName" autofocus="autofocus" maxlength="20" />
+            <br />
+            <br />
+            <span class="textInfo">产品单价：</span><input type="text" class="text" value="@Model.UnitPrice" placeholder="产品单价" name="UnitPrice" maxlength="8" />
+            <br />
+            <br />
+            <span class="textInfo">产品描述：</span><input type="text" class="text" value="@Model.PDescription" multiple placeholder="产品描述" name="PDescription" maxlength="80" />
+            <br />
+            <br />
+            <span class="textInfo">图片路径：</span><input id="Image" class="text" readonly type="text" value="@Model.ImageUrl" multiple placeholder="图片路径" name="ImageUrl" maxlength="8" />
+            <br />
+            <br />
+            <span class="textInfo">文件选择：</span><input type="file" class="text" name="ImageUrl" id="file1" onchange="change(this.value)" />
+            <br />
+            <br />
+            <span class="textInfo">产品类型：</span>@Html.DropDownList("CID", new SelectList(ViewBag.Category, "CID", "CategoryName", @Model.CID), new { @class="text"})
+            <br />
+            <br />
+            <br />
+            <input type="submit" class="btnSave" value="保存" />
+            @Html.ActionLink("取消", "ProductManager", null, new { @class="btnCancel"})
+        </div>
+    }
+    <script>
+        function change(src) {
+            var arr = src.split("\\");
+            var my = arr[arr.length - 1];
+            $("#Image").val(my);
+        }
+    </script>
+</body>
+</html>

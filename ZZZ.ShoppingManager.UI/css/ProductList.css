@@ -1,0 +1,215 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.ProductList {
+    width: 1150px;
+    height: 700px;
+    margin: 0 auto;
+    position: relative;
+    top: 60px;
+}
+
+#clearFloat:after {
+    clear: both;
+    display: block;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+
+#clearFloat {
+    zoom: 1;
+}
+
+#Search {
+    width: 300px;
+    height: 50px;
+    position: relative;
+    top: 50px;
+}
+
+.Product {
+    width: 220px;
+    height: 330px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    border: 1px solid #ff6a00;
+    text-align: center;
+}
+
+    .Product:hover {
+        box-shadow: #ff6a00 3px 3px 3px;
+    }
+
+        .Product:hover .imgs {
+            margin-top: 1px;
+        }
+
+.imgs {
+    width: 218px;
+    height: 200px;
+}
+
+#title {
+    text-align: center;
+    font-size: 29px;
+    color: white;
+    position: relative;
+    left: 88px;
+}
+
+#Heard {
+    width: 100%;
+    height: 50px;
+    background-color: #ff6a00;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    z-index: 100;
+}
+
+a {
+    list-style: none;
+    font-size: 15px;
+}
+
+#MyCart {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    background-color: #f2a720;
+    float: right;
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+#Login {
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    background-color: #f2a720;
+    line-height: 50px;
+    float: right;
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+.MyCart, .Login {
+    color: white;
+}
+
+    .Login:hover, .MyCart:hover {
+        color: #ff6a00;
+        text-decoration: none;
+    }
+
+#CategoryHeard {
+    width: 188.86px;
+    height: 50px;
+    background-color: #f2a720;
+    color: white;
+    font-size: 26px;
+    line-height: 50px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#Category {
+    width: 14%;
+    float: left;
+    height: 700px;
+    position: fixed;
+    top: 115px;
+}
+
+#Pdiv {
+    width: 86%;
+    float: right;
+}
+
+.Category {
+    display: inline-block;
+    width: 188.86px;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    font-size: 18px;
+    background-color: #ff6a00;
+    margin-bottom: 1px;
+}
+
+    .Category:hover {
+        color: #f2a720;
+        text-decoration: none;
+    }
+
+.UnitPrice {
+    color: #ff6a00;
+}
+
+.PDescription:hover {
+    color: #ff6a00;
+}
+
+.AddCartDiv {
+    width: 218px;
+    height: 40px;
+    background-color: #ff6a00;
+    line-height: 40px;
+}
+
+.AddCart {
+    color: white;
+    font-size: 18px;
+}
+
+    .AddCart:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+.AddCartDiv:hover {
+    background-color: #f2a720;
+}
+
+.pagination {
+    position: relative;
+    top: 20px;
+}
+
+#PageList {
+    text-align: center;
+}
+
+#Search {
+    position: relative;
+    top: 60px;
+}
+
+.text {
+    width: 200px;
+    height: 35px;
+    border: 1px solid #ff6a00;
+}
+
+#btnSearch {
+    width: 60px;
+    height: 35px;
+    border: 1px solid #ff6a00;
+}
+
+    #btnSearch:hover {
+        background-color: #ff6a00;
+    }
+
+#SearchOut {
+    position:relative;
+    left:15px;
+}

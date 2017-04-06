@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Insert</title>
+    @Styles.Render("~/css/EditProduct.css")
+</head>
+<body>
+    @using (Html.BeginForm("Insert", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div id="Heard">
+            <span id="title">
+                添加商品信息
+            </span>
+        </div>
+    <div id="Infomation">
+        <span class="textInfo">产品名称：</span><input class="form-control required text" type="text" placeholder="产品名称" name="PName" autofocus="autofocus" maxlength="20" />  @Html.ValidationMessage("PName", "产品名称必填")
+        <br />
+        <br />
+        <span class="textInfo">产品单价：</span><input class="form-control required text" type="text" placeholder="产品单价" name="UnitPrice" maxlength="8" />  @Html.ValidationMessage("UnitPrice", "产品单价必填")
+        <br />
+        <br />
+        <span class="textInfo">产品描述：</span><input class="form-control required text" type="text" multiple placeholder="产品描述" name="PDescription" />
+        <br />
+        <br />
+        <span class="textInfo">图片路径：</span><input type="file" class="text" name="ImageUrl" />@Html.ValidationMessage("ImageUrl", "未选择文件")
+        <br />
+        <br />
+        <span class="textInfo">产品类型：</span>@Html.DropDownList("CID", new SelectList(ViewBag.Category, "CID", "CategoryName"), new { @class = "text" })
+        <br />
+        <br />
+        <br />
+        <input type="submit" class="btnSave" value="添加商品" />
+        @Html.ActionLink("取消", "ProductManager", null, new { @class = "btnCancel" })
+    </div>
+    }
+</body>
+</html>

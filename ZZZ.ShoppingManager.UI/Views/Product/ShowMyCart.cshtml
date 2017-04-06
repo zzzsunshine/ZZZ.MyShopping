@@ -1,0 +1,71 @@
+﻿@using ZZZ.ShoppingManager.Model
+@model List<Cart>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowMyCart</title>
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/css/ShowMyCart.css")
+</head>
+<body>
+    <div id="Heard">
+        <span id="title">
+            购物车
+        </span>
+        <div id="MyCart">@Html.ActionLink("产品首页", "ProductList", null, new { @class = "MyCart" })</div>
+        <div id="Login"><span class="glyphicon glyphicon-user"></span>@Html.ActionLink("登录", "Logon", "Account", null, new { @class = "Login" })</div>
+
+    </div>
+                <table id="Products">
+                    <thead>
+                        <tr id="ProductTitle">
+                            <th>产品名称</th>
+                            <th>图片</th>
+                            <th>描述</th>
+                            <th>数量</th>
+                            <th>单价</th>
+                            <th>小计</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var urls = "/Image/" + @item.ImageUrl;
+                            <tr class="ProductInfo">
+                                <td>@item.PName</td>
+                                <td><img src=@urls id="imgs" /></td>
+                                <td>@item.PDescriptionText</td>
+                                <td><span class="AddQuantityDiv">@Html.ActionLink("-", "MinusQuantity", new { PID = @item.PID }, new { @class = "AddQuantity" })</span> @item.Quantity <span class="AddQuantityDiv">@Html.ActionLink("+", "AddQuantity", new { PID = @item.PID }, new { @class = "AddQuantity" })</span></td>
+                                <td>@item.UnitPrice</td>
+                                <td>@item.subTotal</td>
+                                <td>@Html.ActionLink("删除", "DeleteCart", new { ID = item.ID }, new { id="btnDelete"})</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+    <script>
+        $(function () {
+            $("#btnDelete").click(function () {
+                var YesOrNo = confirm("确认删除？");
+                if (YesOrNo) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            })
+        });
+    </script>
+</body>
+</html>

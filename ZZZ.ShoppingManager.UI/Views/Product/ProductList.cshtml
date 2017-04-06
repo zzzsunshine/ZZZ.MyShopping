@@ -1,0 +1,78 @@
+﻿@using ZZZ.ShoppingManager.Model
+@using ZZZ.ShoppingManager.UI.Models;
+@model List<Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductList</title>
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/css/ProductList.css")
+</head>
+<body>
+    <div id="clearFloat">
+    <div id="Heard">
+        <span id="title">
+            ZZZShopping
+        </span>
+        <div id="MyCart"><span class="glyphicon glyphicon-shopping-cart"></span> @Html.ActionLink("我的购物车", "ShowMyCart", null, new { @class = "MyCart" })</div>
+        <div id="Login"><span class="glyphicon glyphicon-user"></span>@Html.ActionLink("登录", "Logon", "Account", null, new { @class = "Login" })</div>
+
+    </div>
+    
+    <div id="Category">
+        
+        <div id="CategoryHeard">商品分类</div>
+        <ul>
+            <li>@Html.ActionLink("全部", "ProductList", new { CID = -1}, new { @class = "Category" })</li>
+            @foreach (var item in ViewBag.Category as List<Category>)
+            {
+
+                <li>@Html.ActionLink(@item.CategoryName, "ProductList", new { CID = @item.CID,Name=@item.CategoryName }, new { @class = "Category" })</li>
+            }
+        </ul>
+
+    </div>
+
+    <div id="Pdiv">
+        <div id="SearchOut">
+        <div id="Search">
+            @using (Html.BeginForm("ProductList"))
+            {
+                <input type="text" name="Info" placeholder="搜索"  class="text" value="@ViewBag.Info" />
+                 @*<input type="text" id="keyword" name="Keyword" value="搜你所想" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '搜你所想';}" />*@
+
+    @*<input type="text" name="Info" class="text" value="搜你所想" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '搜索';}" />*@
+                <input type="submit" value="搜索" id="btnSearch"/>
+            }
+
+        </div>
+            </div>
+        <ul class="ProductList">
+            @foreach (var item in Model)
+            {
+                var urls = "/Image/" + @item.ImageUrl;
+                <li class="Product">
+                    <img src=@urls class="imgs">
+                    <p class="PName">@item.PName</p>
+                    <p class="PDescription">@item.PDescriptionText</p>
+                    <p class="UnitPrice">price:@item.UnitPrice</p>
+                    <div class="AddCartDiv">@Html.ActionLink("加入购物车", "AddCart", new { PID = @item.PID }, new { @class = "AddCart" })</div>
+                </li>
+
+            }
+        </ul>
+        <div id="PageList"> @Html.PageLinks(ViewBag.pagenationText as PagenationText, no => Url.Action("ProductList", new { PageNo = no, CID = ViewBag.CID }))</div>
+    </div>
+    </div>
+
+</body>
+</html>

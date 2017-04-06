@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Logon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logon</title>
+    @Styles.Render("~/css/Logon.css")
+</head>
+<body>
+        @using (Html.BeginForm("Logon"))
+{
+    <div id="container">
+        <div id="Login">
+                <h2>请登录</h2>
+            <br />
+            <br />
+                <span class="label">账号：</span><input type="text" class="text required" placeholder="账号" name="UName" autofocus="autofocus" maxlength="20" /><br />  @Html.ValidationMessage("UName", "账号必填", new { @class="Valited"})
+                <br />
+                <br />
+            <br />
+                <span class="label">密码：</span><input type="password" class="text required" placeholder="密码" name="UPwd" maxlength="8" /><br />  @Html.ValidationMessage("UPwd", "密码必填", new { @class = "Valited" })
+                <br />
+                <br />
+            <br />
+                <input type="submit" value="登陆" id="btnLogon"/>
+                @Html.ActionLink("注册", "Regin",null, new { @class="btnRegin" })
+            </div>
+       </div>
+}
+@if (ViewData["isShow"].ToString() == "true")
+{
+    <script>alert("密码或账号错误，请重新登录")</script>
+}
+</body>
+</html>

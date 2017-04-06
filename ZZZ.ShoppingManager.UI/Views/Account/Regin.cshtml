@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Regin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Regin</title>
+    @Styles.Render("~/css/Region.css")
+    <script>
+        $(function () {
+            $("#btnLogon").click(function () {
+                var UPwd = $("#UPwd").val();
+                var UPwdAgain = $("#UPwdAgain").val();
+                if (UPwd != UPwdAgain) {
+                    alert("两次密码必须一致");
+                    return false;
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Regin"))
+        {
+            
+            <div id="container">
+        <div id="Login">
+                <h2>请注册</h2>
+            <br />
+            <br />
+                <span class="label">账号：</span><input type="text" class="text required" placeholder="账号" name="UName" autofocus="autofocus" maxlength="20" /><br />  @Html.ValidationMessage("UName", "账号必填", new {@class="Valited"})
+                <br />
+                <br />
+            <br />
+                <span class="label">密码：</span><input type="password" class="text required" placeholder="密码" name="UPwd" maxlength="8" /><br />  @Html.ValidationMessage("UPwd", "密码必填", new { @class = "Valited" })
+                <br />
+                <br />
+
+            <br />
+            <div id="again">
+                <span class="label">确认密码：</span><input type="password" class="text required" placeholder="确认密码" name="UPwdAgain" maxlength="8" /><br />@Html.ValidationMessage("UPwdAgain", "确认密码必填", new { @class = "Valited" })
+            </div>
+            <br />
+            <br />
+            <span class="label">类型：</span>@Html.DropDownList("RId", new SelectList(ViewBag.Roles, "RId", "RName"), new { @class="DropType"})
+            <br />
+            <br />
+
+            <br />
+                <input type="submit" value="注册" id="btnLogon"/>
+            @Html.ActionLink("取消", "Logon", null, new { @class = "btnCancel" })
+            </div>
+       </div>
+            
+        }
+    </div>
+    @if(ViewData["isShow"].ToString()=="true")
+    {
+        <script>alert("此用户已存在,请重新注册")</script>
+    }
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+#title {
+    text-align: center;
+    font-size: 29px;
+    color: white;
+    position: relative;
+    left: 88px;
+}
+
+#Heard {
+    width: 100%;
+    height: 50px;
+    background-color: #ff6a00;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    z-index: 100;
+}
+
+a {
+    list-style: none;
+    font-size: 15px;
+}
+
+#MyCart {
+    display: inline-block;
+    width: 110px;
+    height: 50px;
+    background-color: #f2a720;
+    float: right;
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+#Login {
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    background-color: #f2a720;
+    line-height: 50px;
+    float: right;
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+.MyCart, .Login {
+    color: white;
+}
+
+    .Login:hover, .MyCart:hover {
+        color: #ff6a00;
+        text-decoration: none;
+    }
+
+#Products {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    top: 70px;
+}
+
+.ProductInfo {
+    border: 1px solid #ff6a00;
+    height: 200px;
+    margin-top: 40px;
+}
+
+#ProductTitle {
+    border-top: 1px solid #ff6a00;
+    height: 100px;
+}
+
+#btnDelete {
+    color: black;
+}
+
+    #btnDelete:hover {
+        color: #ff6a00;
+        text-decoration: none;
+    }
+
+.AddQuantity {
+    color: black;
+}
+
+.AddQuantityDiv {
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    background-color: #7d7979;
+    text-align: center;
+}
+
+    .AddQuantityDiv:hover {
+        background-color: #b9b3b3;
+    }
+
+.AddQuantity:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#imgs {
+    width: 100px;
+    height: 100px;
+}
+.pagination {
+    position: relative;
+    top: 70px;
+}
+#PageList{
+    text-align:center;
+}
